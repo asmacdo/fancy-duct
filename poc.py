@@ -48,6 +48,7 @@ def main():
     ax2.legend(loc='upper right')
 
     plt.title('Resource Usage Over Time')
+    # plt.savefig('resource_usage.png')
     plt.show()
 
 
