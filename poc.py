@@ -27,8 +27,8 @@ def main():
     # Extract other data
     pmem = np.array([entry["totals"]["pmem"] for entry in data])
     pcpu = np.array([entry["totals"]["pcpu"] for entry in data])
-    rss_kb = np.array([entry["totals"]["rss_kb"] for entry in data])
-    vsz_kb = np.array([entry["totals"]["vsz_kb"] for entry in data])
+    rss_kb = np.array([entry["totals"]["rss"] for entry in data])
+    vsz_kb = np.array([entry["totals"]["vsz"] for entry in data])
 
     # Plotting
     fig, ax1 = plt.subplots()
@@ -42,14 +42,13 @@ def main():
 
     # Create a second y-axis for rss and vsz
     ax2 = ax1.twinx()
-    ax2.plot(elapsed_time, rss_kb, label='rss (KiB)', color='tab:green')
-    ax2.plot(elapsed_time, vsz_kb, label='vsz (KiB)', color='tab:red')
-    ax2.set_ylabel('KiB')
+    ax2.plot(elapsed_time, rss_kb, label='rss (B)', color='tab:green')
+    ax2.plot(elapsed_time, vsz_kb, label='vsz (B)', color='tab:red')
+    ax2.set_ylabel('B')
     ax2.legend(loc='upper right')
 
     plt.title('Resource Usage Over Time')
-    # plt.savefig('resource_usage.png')
-    plt.show()
+    plt.savefig('resource_usage.png')
 
 
 if __name__ == "__main__":
